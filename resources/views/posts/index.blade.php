@@ -20,12 +20,13 @@
                         {{ $post->title }}
                     </div>
                 <div class="card-body">
-                    {{ $post->body }}
+                    
                     <div>{{ Str::limit($post->body, 100, '.') }}</div>
-                    <a href="/posts/{{ $post->slug }}">Read more</a>
+                    <a href="/posts/{{ $post->slug }}"><small>Read more</small></a>
                 </div>
-                <div class="card-footer">
+                <div class="card-footer d-flex justify-content-between">
                     Published on {{ $post->created_at->diffForHumans() }}
+                    <a href="posts/{{ $post->slug }}/edit" class="btn btn-sm btn-success"> Edit</a>
                 </div>
                 </div>
             </div>
