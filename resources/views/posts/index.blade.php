@@ -31,7 +31,7 @@
                 <div class="card-body">
                     
                     <div>{{ Str::limit($post->body, 100, '.') }}</div>
-                    <a href="/posts/{{ $post->slug }}"><small>Read more</small></a>
+                    <a href="/posts/{{ $post->slug }}">Read more</a>
                 </div>
                 <div class="card-footer d-flex justify-content-between">
                     Published on {{ $post->created_at->diffForHumans() }}
