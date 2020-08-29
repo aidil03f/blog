@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
+    // public function __construct()
+    // {
+    //     //except itu pengecualian
+    //     $this->middleware('auth')->except(['index','show']);
+    // }
 
     public function index()
     {
