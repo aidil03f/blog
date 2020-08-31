@@ -20,10 +20,13 @@
               Wrote by {{ $post->author->name }}
           </div>
      {{-- @if(auth()->user()->id == $post->user_id) --}}
+@can('delete', $post)
  <!-- Button trigger modal -->
 <button type="button" class="btn btn-link text-danger btn-sm p-0" data-toggle="modal" data-target="#exampleModal">
       Delete
 </button>
+
+
      <!-- Modal -->
           <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                <div class="modal-dialog">
@@ -54,6 +57,7 @@
                </div>
           </div>
      {{-- @endif --}}
-     </div>
+@endcan
+</div>
 </div>
 @endsection

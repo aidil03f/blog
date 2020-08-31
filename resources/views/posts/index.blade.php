@@ -34,14 +34,16 @@
                     </div>
                 <div class="card-body">
                     
-                    <div>{{ Str::limit($post->body, 100, '.') }}</div>
+                    <div>{{ \Str::limit($post->body, 100, '.') }}</div>
                     <a href="/posts/{{ $post->slug }}">Read more</a>
                 </div>
                 <div class="card-footer d-flex justify-content-between">
                     Published on {{ $post->created_at->diffForHumans() }}
-                    @auth
+                    {{-- @if(auth()->user()->is($post->author)) --}}
+                    @can('update', $post)
                         <a href="posts/{{ $post->slug }}/edit" class="btn btn-sm btn-success"> Edit</a>
-                    @endauth
+                    @endcan
+                    {{-- @endif --}}
                 </div>
                 </div>
             </div>

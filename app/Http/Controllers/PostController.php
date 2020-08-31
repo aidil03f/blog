@@ -67,6 +67,7 @@ class PostController extends Controller
 
     public function update(Post $post)
     {
+        $this->authorize('update', $post);
         $attr = request()->validate([
             'title' => 'required|min:3',
             'body'  => 'required',
@@ -88,14 +89,17 @@ class PostController extends Controller
         // session()->flash('success','The post was destroyed');
         // return redirect('posts');
 
-        if(auth()->user()->is($post->author)){
-            $post->tags()->detach();
-            $post->delete();
-            session()->flash('success','The post was destroyed');
-            return redirect('posts');
-        } else {
-            session()->flash("error","It wasn't your post");
-            return redirect('posts');
-        }
+        // if(auth()->user()->is($post->author)){
+        //     $post->tags()->detach();
+        //     $post->delete();
+        //     session()->flash('success','The post was destroyed');
+        //     return redirect('posts');
+        // } else {
+        //     session()->flash("error","It wasn't your post");
+        //     return redirect('posts');
+        // }
+        $this->authorize('update', $post);
+        session()->flash('success','The post was destroyed');
+        return redirect('posts');
     }
 }
