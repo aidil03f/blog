@@ -29,11 +29,15 @@
         @forelse ($posts as $post)     
             <div class="col-md-4">
                 <div class="card mb-4">
-                    <div class="card-header">
+                   
+                @if($post->thumbnail)
+                    <img style="height: 270px; object-fit: cover; object-position: center;"
+                    src="{{ $post->takeImage }}" class="image-img-top">
+                @endif
+                <div class="card-body">
+                    <div class="card-title">
                         {{ $post->title }}
                     </div>
-                <div class="card-body">
-                    
                     <div>{{ \Str::limit($post->body, 100, '.') }}</div>
                     <a href="/posts/{{ $post->slug }}">Read more</a>
                 </div>
