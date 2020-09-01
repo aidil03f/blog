@@ -88,6 +88,7 @@ class PostController extends Controller
         $thumbnail = request()->file('thumbnail')->store("images/posts");
 
         $attr = request()->validate([
+            'thumbnail'=> 'image|mimes:jpeg,png,jpg,jfif|max:2048',
             'title' => 'required|min:3',
             'body'  => 'required',
             'category' => 'required',
