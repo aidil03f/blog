@@ -7,21 +7,21 @@ use Illuminate\Support\Facades\Route;
 //     return view('home');
 // });
 Route::middleware('auth')->group(function(){
-
+    
     Route::get('posts','PostController@index')->name('posts.index')->withoutMiddleware('auth');
     Route::get('posts/create','PostController@create')->name('posts.create');
     Route::post('posts/store','PostController@store');
     
-    Route::get('posts/{post:slug}/edit','PostController@edit');
     Route::patch('posts/{post:slug}/edit','PostController@update');
+    Route::get('posts/{post:slug}/edit','PostController@edit');
     
     Route::delete('posts/{post:slug}/delete','PostController@destroy');
-    Route::get('posts/{post:slug}','PostController@show')->withoutMiddleware('auth');
 });
 
+Route::get('posts/{post:slug}','PostController@show')->name('posts.show');
 
-Route::get('categories/{category:slug}','CategoryController@show');
-Route::get('tags/{tag:slug}','TagController@show');
+Route::get('categories/{category:slug}','CategoryController@show')->name('categories.show');
+Route::get('tags/{tag:slug}','TagController@show')->name('tags.show');
 
 
 Route::view('contact','contact');
